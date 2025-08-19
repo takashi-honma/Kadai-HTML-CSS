@@ -1,5 +1,8 @@
 @charset "utf-8";
 
+/*
+Base Style
+*/
 body {
     font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     font-size: 15px;
@@ -13,6 +16,9 @@ button{
     padding: 0;
 }
 
+/*
+Section
+*/
 .section {
     padding: 30px 15px;
 }
@@ -45,7 +51,9 @@ button{
     } 
 }
 
-
+/*
+header
+*/
 .header {
     width: 100%;
     display: flex;
@@ -89,6 +97,9 @@ button{
     }
 }
 
+/*
+hero
+*/
 .hero {
     width: 100vw;
     height: 100vh;
@@ -123,6 +134,9 @@ button{
     }
 }
 
+/*
+about
+*/
 .about {
     margin: 0;
     display: flex;
@@ -148,6 +162,9 @@ button{
     }
 }
 
+/*
+grid
+*/
 .grid {
     display: flex;
     margin: 0;
@@ -155,7 +172,6 @@ button{
     align-items: center;
     justify-content: center;
 }
-
 .grid-item {
     list-style: none;
 }
@@ -181,6 +197,9 @@ button{
 
 }
 
+/*
+feature
+*/
 .feature {
     text-align: center;
     padding: 0 15px;
@@ -197,6 +216,9 @@ button{
     text-align: left;
 }
 
+/*
+card
+*/
 .card {
     padding: 10px;
 
@@ -235,6 +257,9 @@ button{
     margin: 0;
 }
 
+/*
+avatar
+*/
 .avatar {
     display: flex;
     flex-direction: row-reverse;
@@ -252,6 +277,9 @@ button{
     overflow: hidden;
 }
 
+/*
+button
+*/
 .button {
     display: inline-block;
     color: #fff;
@@ -271,6 +299,9 @@ button{
     background: #92d3ca;
 }
 
+/*
+.select, .input, .radio, .textarea
+*/
 .select {
     border-radius: 5px;
     padding: 10px;
@@ -302,6 +333,9 @@ button{
     }
 }
 
+/*
+form
+*/
 .form-table {
     margin: 0 auto;
 }
@@ -326,7 +360,9 @@ button{
     }
 }
 
-
+/*
+works
+*/
 .works{
     margin: 40px;
     padding: 20px;
@@ -346,6 +382,9 @@ button{
     }
 }
 
+/*
+footer
+*/
 .footer {
     background-color: #333;
     color: #fff;
