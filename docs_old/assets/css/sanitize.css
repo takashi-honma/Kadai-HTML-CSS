@@ -40,7 +40,6 @@ html {
   -webkit-tap-highlight-color: transparent /* 4 */;
   -ms-text-size-adjust: 100%; /* 5 */
   -webkit-text-size-adjust: 100%; /* 5 */
-  text-size-adjust: 100%;
   word-break: break-word; /* 6 */
 }
 
@@ -287,7 +286,6 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-  appearance: none; 
 }
 
 /**
@@ -366,7 +364,6 @@ textarea {
 
 [type="search"] {
   -webkit-appearance: textfield; /* 1 */
-  appearance: none; 
   outline-offset: -2px; /* 2 */
 }
 
