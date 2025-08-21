@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>たのしい！ ○×ゲーム</title>
+    <meta name="description" content="●× ○× games">
+    <link rel="stylesheet" href="./assets/css/sanitize.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/png">
+    <link rel="apple-touch-icon" href="./assets/images/icon.png">
+    <link rel="icon" href="./assets/images/favicon.ico" type="image/svg+xml">
+</head>
+
+<body>
+    <section class="section">
+        <h1>たのしい！ ○×ゲーム</h1>
+    </section>
+
+    <section class="section">
+        <div class="game-section">
+            <div class="info-section">
+                <div class="info">
+                    <div class="turn-info">
+                        <p class="info-header">Turn</p>
+                        <p class="info-text" id="turnText">-</p>
+                    </div>
+                    <div class="player-info">
+                        <p class="info-header">Player</p>
+                        <p class="info-text" id="playerText">-</p>
+                    </div>
+                </div>
+                <div class="new-win-pattern hidden" id="new-win-pattern">
+                    <p class="info-header">New Pattern</p>
+                    <div class="cell-grid-newPattern">
+                        <div class="cell-newPattern" data-index="0"><span class="mark-newPattern">-</span></div>
+                        <div class="cell-newPattern" data-index="1"><span class="mark-newPattern">-</span></div>
+                        <div class="cell-newPattern" data-index="2"><span class="mark-newPattern">-</span></div>
+
+                        <div class="cell-newPattern" data-index="3"><span class="mark-newPattern">-</span></div>
+                        <div class="cell-newPattern" data-index="4"><span class="mark-newPattern">-</span></div>
+                        <div class="cell-newPattern" data-index="5"><span class="mark-newPattern">-</span></div>
+
+                        <div class="cell-newPattern" data-index="6"><span class="mark-newPattern">-</span></div>
+                        <div class="cell-newPattern" data-index="7"><span class="mark-newPattern">-</span></div>
+                        <div class="cell-newPattern" data-index="8"><span class="mark-newPattern">-</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="cell-grid">
+                <div class="cell" data-index="0"><span class="mark">-</span></div>
+                <div class="cell" data-index="1"><span class="mark">-</span></div>
+                <div class="cell" data-index="2"><span class="mark">-</span></div>
+
+                <div class="cell" data-index="3"><span class="mark">-</span></div>
+                <div class="cell" data-index="4"><span class="mark">-</span></div>
+                <div class="cell" data-index="5"><span class="mark">-</span></div>
+
+                <div class="cell" data-index="6"><span class="mark">-</span></div>
+                <div class="cell" data-index="7"><span class="mark">-</span></div>
+                <div class="cell" data-index="8"><span class="mark">-</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <p class="under-text" id="underText"></p>
+    </section>
+
+    <section class="section">
+        <button class="button" id="button">スタート</button>
+    </section>
+
+    <section class="section">
+        <div class="config" id="config">
+            <h2 class="config-top">設定</h2>
+
+            <table class="config-table">
+                <tr>
+                    <th>
+                        マークの個数制限
+                    </th>
+                    <td>
+                        <label class="radio">
+                            <input type="radio" name="config-MarkLimit" value="false" checked> なし
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="config-MarkLimit" value="true"> 6つまで
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        追加勝利パターン
+                    </th>
+                    <td>
+                        <label class="radio">
+                            <input type="radio" name="config-AddWinPattern" value="false" checked> なし
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="config-AddWinPattern" value="true"> あり
+                        </label>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="rule">
+                <h2 class="rule-top">現在のルール</h2>
+                <p class="rule-text" id="ruleText">・○と×のマークを交互に置き合って戦う、一般的な○×ゲームです。<br><br>
+                    ・縦、横、斜めに自身のマークを揃えたら勝利となります。</p>
+            </div>
+
+        </div>
+    </section>
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>

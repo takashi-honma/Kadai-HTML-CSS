@@ -1,0 +1,284 @@
+@charset "utf-8";
+
+:root{
+    --color-○: #0000ffff;
+    --color-×: #ff0000ff;
+}
+
+/*
+base
+*/
+body {
+    font-family: "Noto Sans JP", "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.info-header,
+.info-text,
+.under-text {
+    font-weight: bold;
+}
+
+.button,
+.cell {
+    cursor: pointer;
+}
+
+/*
+section
+*/
+.section {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.game-section {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 320px;
+}
+
+.section-button {
+    gap: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .game-section {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+}
+
+
+/*
+info
+*/
+.info {
+    position: absolute;
+    left: calc(50% - 220px);
+    top: 50%;
+    transform: translateY(-55%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+}
+
+.info-text {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.info-text.mark-○ {
+    color: var(--color-○);
+}
+
+.info-text.mark-× {
+    color: var(--color-×);
+}
+
+@media screen and (max-width: 768px) {
+    .info-section {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        position: static;
+        transform: none;
+        margin: 20px 20px 0 0;
+    }
+
+}
+
+/*
+cell
+*/
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.cell-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    z-index: 1
+}
+
+.cell.mark-○ {
+    color: var(--color-○);
+    animation: fadeIn 1s ease forwards;
+}
+
+.cell.mark-× {
+    color: var(--color-×);
+    animation: fadeIn 1s ease forwards;
+}
+
+.cell.mark-old {
+    background-color: #ffff0040;
+    transition: background-color 0.3s ease;
+}
+
+/*
+new-win-pattern
+*/
+.new-win-pattern {
+    position: absolute;
+    left: calc(50% + 180px);
+    top: 50%;
+    transform: translateY(-70%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+
+}
+
+.cell-newPattern {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.cell-grid-newPattern {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    z-index: 1
+}
+
+.cell-newPattern.mark-star {
+    color: #ffff00ff;
+    background-color: #333;
+    animation: fadeIn 1s ease forwards;
+}
+
+@media screen and (max-width: 768px) {
+    .new-win-pattern {
+        position: static;
+        transform: none;
+        margin-bottom: 20px;
+        gap: 5px;
+    }
+
+    .cell-newPattern {
+        width: 30px;
+        height: 30px;
+        font-size: 10px;
+    }
+}
+
+/*
+button
+*/
+.button {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    background: #c50000;
+    padding: 15px 60px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 #bbb;
+    transition: box-shadow 0.25s;
+}
+
+.button:hover {
+    box-shadow: none;
+}
+
+/*
+config
+*/
+.config {
+    background-color: #d9d9d9;
+    margin: 20px;
+    padding: 0px 100px 30px 100px;
+    border-radius: 10px;
+}
+
+.config-top {
+    padding: 0px;
+}
+
+.config-table {
+    text-align: left;
+    padding: 10px;
+}
+
+.radio {
+    margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .config-table {
+        display: block;
+    }
+
+    .config-table tr {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .config-table th,
+    .config-table td {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/*
+rule
+*/
+.rule-text {
+    max-width: 300px; 
+    text-align: left;
+}
+
+/*
+other
+*/
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
