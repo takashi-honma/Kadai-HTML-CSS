@@ -8,7 +8,10 @@ const turnText = document.getElementById("turnText");
 const playerText = document.getElementById("playerText");
 const cells = document.querySelectorAll(".cell");
 const button = document.getElementById("button");
+const buttonConfig = document.getElementById("buttonConfig");
+const buttonClose = document.getElementById("buttonClose");
 const config = document.getElementById("config");
+const configBackGround = document.getElementById("configBackGround");
 const ruleText = document.getElementById("ruleText");
 const idOfNewWinPattern = document.getElementById("new-win-pattern");
 let configMarkLimit = false;
@@ -21,15 +24,23 @@ let winPatterns = [
 ];
 
 button.addEventListener("click", clickStartButton);
+buttonConfig.addEventListener("click", clickConfigButton);
+buttonClose.addEventListener("click", configClose);
 
-document.querySelectorAll(".cell").forEach(cell => {
+configBackGround.addEventListener("click", function (e) {
+    if (e.target === configBackGround) {
+        configClose();
+    }
+});
+
+cells.forEach(cell => {
     cell.addEventListener("click", markCell);
 });
 
 document.querySelectorAll('input[name="config-MarkLimit"], input[name="config-AddWinPattern"]').forEach(input => {
-  input.addEventListener("change", () => {
-    changeRuleText();
-  });
+    input.addEventListener("change", () => {
+        changeRuleText();
+    });
 });
 
 
@@ -47,7 +58,7 @@ function clickStartButton() {
     markTurnArray.fill(0);
     turn = 1;
     button.textContent = "ゲームをやめる"
-    config.classList.add("hidden");
+    buttonConfig.classList.add("hidden");
     underText.textContent = null
 
     //勝利パターンのリセット
@@ -67,6 +78,14 @@ function clickStartButton() {
         idOfNewWinPattern.classList.add("hidden");
     }
     updateText();
+}
+
+function clickConfigButton() {
+    config.classList.remove("hidden");
+}
+
+function configClose() {
+    config.classList.add("hidden");
 }
 
 function markCell(event) {
@@ -177,7 +196,7 @@ function cellLifeSpan() {
 function gameEndFunc() {
     turnPlayer = 0;
     button.textContent = "もう一度"
-    config.classList.remove("hidden");
+    buttonConfig.classList.remove("hidden");
 }
 
 function addWinPattern() {
@@ -224,21 +243,21 @@ function showNewPattern() {
     });
 }
 
-function changeRuleText(){
+function changeRuleText() {
     configMarkLimit = document.querySelector('input[name="config-MarkLimit"]:checked').value === "true";
     configAddWinPattern = document.querySelector('input[name="config-AddWinPattern"]:checked').value === "true";
     let MarkLimitText = ""
     let WinPatternText = ""
 
-    if(configMarkLimit === false){
+    if (configMarkLimit === false) {
         MarkLimitText = "・○と×のマークを交互に置き合って戦う、一般的な○×ゲームです。<br><br>"
-    }else{
+    } else {
         MarkLimitText = "・同時に6つまでしかマークの置けない、特殊な○×ゲームです。7つ目のマークが置かれる時一番古いマークが消失します。<br><br>"
     }
 
-    if(configAddWinPattern === false){
+    if (configAddWinPattern === false) {
         WinPatternText = "・縦・横・斜めに3つのマークを揃えたら勝ちです。"
-    }else{
+    } else {
         WinPatternText = "・縦・横・斜めに加え、その通りに置いたら勝利になるマスの組み合わせが1パターン追加されます。"
     }
 

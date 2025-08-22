@@ -73,49 +73,53 @@
         <p class="under-text" id="underText"></p>
     </section>
 
-    <section class="section">
+    <section class="section section-button">
         <button class="button" id="button">スタート</button>
+        <button class="button button-config" id="buttonConfig">設定</button>
     </section>
 
-    <section class="section">
-        <div class="config" id="config">
-            <h2 class="config-top">設定</h2>
+    <section class="section hidden" id="config">
+        <div class="config-overlay" id="configBackGround">
+            <div class="config">
+                <h2 class="config-top">設定</h2>
 
-            <table class="config-table">
-                <tr>
-                    <th>
-                        マークの個数制限
-                    </th>
-                    <td>
-                        <label class="radio">
-                            <input type="radio" name="config-MarkLimit" value="false" checked> なし
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="config-MarkLimit" value="true"> 6つまで
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <th>
-                        追加勝利パターン
-                    </th>
-                    <td>
-                        <label class="radio">
-                            <input type="radio" name="config-AddWinPattern" value="false" checked> なし
-                        </label>
-                        <label class="radio">
-                            <input type="radio" name="config-AddWinPattern" value="true"> あり
-                        </label>
-                    </td>
-                </tr>
-            </table>
+                <table class="config-table">
+                    <tr>
+                        <th>
+                            マークの個数制限
+                        </th>
+                        <td>
+                            <label class="radio">
+                                <input type="radio" name="config-MarkLimit" value="false" checked> なし
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="config-MarkLimit" value="true"> 6つ
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            追加勝利パターン
+                        </th>
+                        <td>
+                            <label class="radio">
+                                <input type="radio" name="config-AddWinPattern" value="false" checked> なし
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="config-AddWinPattern" value="true"> あり
+                            </label>
+                        </td>
+                    </tr>
+                </table>
 
-            <div class="rule">
-                <h2 class="rule-top">現在のルール</h2>
-                <p class="rule-text" id="ruleText">・○と×のマークを交互に置き合って戦う、一般的な○×ゲームです。<br><br>
-                    ・縦、横、斜めに自身のマークを揃えたら勝利となります。</p>
+                <div class="rule">
+                    <h2 class="rule-top">現在のルール</h2>
+                    <p class="rule-text" id="ruleText">・○と×のマークを交互に置き合って戦う、一般的な○×ゲームです。<br><br>
+                        ・縦、横、斜めに自身のマークを揃えたら勝利となります。</p>
+                </div>
+
+                <button class="button button-config" id="buttonClose">閉じる</button>
             </div>
-
         </div>
     </section>
     <script src="./assets/js/app.js"></script>

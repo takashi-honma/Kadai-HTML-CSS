@@ -1,6 +1,6 @@
 @charset "utf-8";
 
-:root{
+:root {
     --color-○: #0000ffff;
     --color-×: #ff0000ff;
 }
@@ -212,6 +212,19 @@ button
     transition: box-shadow 0.25s;
 }
 
+.button-config {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    background: #00009a;
+    padding: 15px 60px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 0 #bbb;
+    transition: box-shadow 0.25s;
+}
+
 .button:hover {
     box-shadow: none;
 }
@@ -220,10 +233,28 @@ button
 config
 */
 .config {
-    background-color: #d9d9d9;
-    margin: 20px;
+    background-color: #ffffff;
     padding: 0px 100px 30px 100px;
     border-radius: 10px;
+    position: fixed;
+    border: 2px solid #000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 101;
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.config-overlay {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00000080;
+    z-index: 100;
+    animation: fadeIn 0.3s ease forwards;
 }
 
 .config-top {
@@ -239,7 +270,13 @@ config
     margin: 0 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 980px) {
+
+    .config {
+        padding: 0px 30px 20px 30px;
+        width: 60%;
+    }
+
     .config-table {
         display: block;
     }
@@ -261,15 +298,16 @@ config
 rule
 */
 .rule-text {
-    max-width: 300px; 
+    max-width: 300px;
     text-align: left;
+    margin-bottom: 30px;
 }
 
 /*
 other
 */
 .hidden {
-    display: none !important;
+    display: none;
     opacity: 0;
 }
 
