@@ -110,12 +110,26 @@
                             </label>
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            NPC戦
+                        </th>
+                        <td>
+                            <label class="radio">
+                                <input type="radio" name="config-NPC" value="false" checked> なし
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="config-NPC" value="true"> あり
+                            </label>
+                        </td>
+                    </tr>
                 </table>
 
                 <div class="rule">
                     <h2 class="rule-top">現在のルール</h2>
                     <p class="rule-text" id="ruleText">・○と×のマークを交互に置き合って戦う、一般的な○×ゲームです。<br><br>
-                        ・縦、横、斜めに自身のマークを揃えたら勝利となります。</p>
+                        ・縦、横、斜めに自身のマークを揃えたら勝利となります。<br><br>
+                        ・プレイヤーとプレイヤーによるローカル対戦です。</p>
                 </div>
 
                 <button class="button button-config" id="buttonClose">閉じる</button>
@@ -123,6 +137,7 @@
         </div>
     </section>
     <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/npc_2.js"></script>
 </body>
 
 </html>

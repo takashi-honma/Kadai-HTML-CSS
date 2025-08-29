@@ -2,20 +2,26 @@ const cellArray = Array(9).fill(0);
 const markTurnArray = Array(9).fill(0);
 let turn = 0;
 let turnPlayer = 0;
+MAX_DEPTH = 10;
 
 const underText = document.getElementById("underText");
 const turnText = document.getElementById("turnText");
 const playerText = document.getElementById("playerText");
+
 const cells = document.querySelectorAll(".cell");
 const button = document.getElementById("button");
 const buttonConfig = document.getElementById("buttonConfig");
 const buttonClose = document.getElementById("buttonClose");
+
 const config = document.getElementById("config");
 const configBackGround = document.getElementById("configBackGround");
 const ruleText = document.getElementById("ruleText");
 const idOfNewWinPattern = document.getElementById("new-win-pattern");
+
 let configMarkLimit = false;
 let configAddWinPattern = false;
+let configNPC = false;
+let clickCT = false;
 
 let winPatterns = [
     [0, 1, 2], [3, 4, 5], [6, 7, 8], // 横
@@ -37,7 +43,7 @@ cells.forEach(cell => {
     cell.addEventListener("click", markCell);
 });
 
-document.querySelectorAll('input[name="config-MarkLimit"], input[name="config-AddWinPattern"]').forEach(input => {
+document.querySelectorAll('input[name="config-MarkLimit"], input[name="config-AddWinPattern"], input[name="config-NPC"]').forEach(input => {
     input.addEventListener("change", () => {
         changeRuleText();
     });
@@ -54,6 +60,7 @@ function clickStartButton() {
 
     configMarkLimit = document.querySelector('input[name="config-MarkLimit"]:checked').value === "true";
     configAddWinPattern = document.querySelector('input[name="config-AddWinPattern"]:checked').value === "true";
+    configNPC = document.querySelector('input[name="config-NPC"]:checked').value === "true";
     cellArray.fill(0);
     markTurnArray.fill(0);
     turn = 1;
@@ -78,6 +85,10 @@ function clickStartButton() {
         idOfNewWinPattern.classList.add("hidden");
     }
     updateText();
+
+    if (configNPC === true && turnPlayer === 1) {
+        aiMove();
+    }
 }
 
 function clickConfigButton() {
@@ -93,10 +104,11 @@ function markCell(event) {
     const index = parseInt(cell.dataset.index);
 
     //ゲーム開始前かすでにマークが記入されているならreturn
-    if (turnPlayer === 0 || cellArray[index] !== 0) {
+    if (turnPlayer === 0 || cellArray[index] !== 0 || clickCT === true) {
         return;
     }
 
+    clickCT = true;
     cellArray[index] = turnPlayer;
     markTurnArray[index] = turn;
     turn += 1;
@@ -113,6 +125,15 @@ function markCell(event) {
     }
     updateText();
     judgeGame();
+
+    if (configNPC === true && turnPlayer === 1) {
+        setTimeout(function () {
+            aiMove();
+            clickCT = false;
+        }, 500);
+    }else{
+        clickCT = false;
+    }
 }
 
 function updateText() {
@@ -246,8 +267,10 @@ function showNewPattern() {
 function changeRuleText() {
     configMarkLimit = document.querySelector('input[name="config-MarkLimit"]:checked').value === "true";
     configAddWinPattern = document.querySelector('input[name="config-AddWinPattern"]:checked').value === "true";
+    configNPC = document.querySelector('input[name="config-NPC"]:checked').value === "true";
     let MarkLimitText = ""
     let WinPatternText = ""
+    let npcText = ""
 
     if (configMarkLimit === false) {
         MarkLimitText = "・○と×のマークを交互に置き合って戦う、一般的な○×ゲームです。<br><br>"
@@ -256,10 +279,16 @@ function changeRuleText() {
     }
 
     if (configAddWinPattern === false) {
-        WinPatternText = "・縦・横・斜めに3つのマークを揃えたら勝ちです。"
+        WinPatternText = "・縦・横・斜めに3つのマークを揃えたら勝ちです。<br><br>"
     } else {
-        WinPatternText = "・縦・横・斜めに加え、その通りに置いたら勝利になるマスの組み合わせが1パターン追加されます。"
+        WinPatternText = "・縦・横・斜めに加え、その通りに置いたら勝利になるマスの組み合わせが1パターン追加されます。<br><br>"
     }
 
-    ruleText.innerHTML = `${MarkLimitText}${WinPatternText}`;
+    if (configNPC === false) {
+        npcText = "・プレイヤーとプレイヤーによるローカル対戦です。"
+    } else {
+        npcText = "・プレイヤーが×、NPCが○を担当します。"
+    }
+
+    ruleText.innerHTML = `${MarkLimitText}${WinPatternText}${npcText}`;
 }
